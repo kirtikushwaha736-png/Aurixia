@@ -1,0 +1,104 @@
+# Aurixia
+Aurixia AI Agency for all business works
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aurixia AI Agency</title>
+<meta name="description" content="Aurixia AI Agency — Human-like AI Owner for any business" />
+<style>
+:root{
+  --bg:#050b14;
+  --card:#0b1c2d;
+  --accent:#1e90ff;
+  --text:#e6f1ff;
+}
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{margin:0;background:var(--bg);color:var(--text);}
+header{padding:40px 20px;text-align:center;}
+header h1{font-size:2.2rem;margin:0;color:var(--accent);}
+header p{opacity:.9;}
+section{padding:30px 20px;max-width:900px;margin:auto;}
+.card{background:var(--card);padding:20px;border-radius:14px;margin-bottom:20px;box-shadow:0 0 20px rgba(0,0,0,.4);} 
+button{background:var(--accent);border:none;color:#fff;padding:12px 18px;border-radius:10px;font-size:1rem;cursor:pointer;}
+button:hover{opacity:.9;}
+#chatBox{height:260px;overflow-y:auto;margin-bottom:10px;font-size:.95rem;}
+.msg{margin-bottom:10px;}
+.ai{color:#7fc7ff;}
+.user{color:#fff;text-align:right;}
+input{width:100%;padding:12px;border-radius:10px;border:none;font-size:1rem;}
+footer{text-align:center;padding:20px;font-size:.85rem;opacity:.7;}
+</style>
+</head>
+<body><header>
+  <h1>Aurixia AI Agency</h1>
+  <p>Human-like AI Owner for Any Business</p>
+  <button onclick="startChat()">Talk to Aurixia</button>
+</header><section class="card">
+  <h2>What Aurixia Does</h2>
+  <p>Scripts, content, reels, ads, posters, basic websites and smart business guidance — all customised for your goal and budget.</p>
+</section><section class="card">
+  <h2>Live Chat with Aurixia</h2>
+  <div id="chatBox"></div>
+  <input id="userInput" placeholder="Type here..." onkeydown="if(event.key==='Enter')sendMsg()" />
+</section><section class="card">
+  <h2>Payment</h2>
+  <p>🇮🇳 UPI (₹ INR): <b>kirtikushwaha736@pingpay</b></p>
+  <p>🌍 International clients: USD pricing (PayPal/Stripe coming soon)</p>
+</section><section class="card">
+  <h2>Contact</h2>
+  <p>Email: <b>Kirtikumari45018@gmail.com</b></p>
+</section><footer>
+  © Aurixia AI Agency — AI that thinks like an owner
+</footer><script>
+const chatBox = document.getElementById('chatBox');
+let step = 0;
+let lang = 'hi';
+
+function addMsg(text, cls){
+  const div = document.createElement('div');
+  div.className = 'msg '+cls;
+  div.innerText = text;
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function startChat(){
+  chatBox.innerHTML='';
+  step = 0;
+  setTimeout(()=>{
+    addMsg("Hello 👋 Main Aurixia hoon. Aapka business kis type ka hai?",'ai');
+  },500);
+}
+
+function sendMsg(){
+  const input = document.getElementById('userInput');
+  const text = input.value.trim();
+  if(!text) return;
+  addMsg(text,'user');
+  input.value='';
+
+  if(/[a-zA-Z]/.test(text)) lang='en'; else lang='hi';
+
+  setTimeout(()=>reply(text),700);
+}
+
+function reply(userText){
+  if(step===0){
+    addMsg(lang==='hi'?
+    "Samajh gayi. Aapka main goal kya hai — sales, branding ya reach?":
+    "Got it. Is your main goal sales, branding, or reach?",'ai');
+    step++;
+  } else if(step===1){
+    addMsg(lang==='hi'?
+    "Is requirement ke liye main best quality solution suggest karungi. Pricing budget ke hisaab se decide hoga.":
+    "Based on your needs, I’ll suggest the best solution. Pricing will depend on the scope.",'ai');
+    step++;
+  } else {
+    addMsg(lang==='hi'?
+    "Payment confirm hote hi main kaam start kar dungi. Aap ready ho?":
+    "Once payment is confirmed, I’ll start immediately. Shall we proceed?",'ai');
+  }
+}
+</script></body>
+</html>
